@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="container-fluid bg-primary">
+        <div class="row">
+            <div class="col">
+                <h1>Martian Miner!</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row d-flex">
+                <div class="col-sm-6 float-right justify-content-center">
+                    <span id="clickMe">
+                    </span>
+                    <h3>$<span><span id="money"></span><span>M</h3></span>
+                    <button class="btn btn-warning" onclick="sell()">Sell Ore</button>
+                    </span>
+                    <div class="card">
+                        <div class="card=title">
+                            <h2>Equipment</h2>
+                        </div>
+                        <div class="card-body">
+                            <span id="gear"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <span id="noSale"></span>
+                    <h3>Buy Items!</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div id="items">
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="app.js"></script>
+</body>
+
+</html>

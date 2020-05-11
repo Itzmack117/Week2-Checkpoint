@@ -1,0 +1,13 @@
+.pointer{
+    cursor: pointer;
+}
+body{
+    background-color: black;
+    color: aliceblue;
+}
+.card{
+    background-color: black !important;
+    border: 2px solid #ff66009f;
+    border-radius: 25%;
+    cursor: pointer;
+}
