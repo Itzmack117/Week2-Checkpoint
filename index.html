@@ -21,34 +21,42 @@
     <main>
         <div class="container-fluid">
             <div class="row d-flex">
-                <div class="col-sm-6 float-right justify-content-center">
-                    <span id="clickMe">
-                    </span>
+                <div class="col-sm-5 float-right justify-content-center">
+                    <span>
+                        <h1>Ore mined:
+                    </span><span id="ore"></span><span>tons</h1></span>
+                    <div class="pointer">
+                        <img id="bg-image"
+                            src="https://www1.villanova.edu/content/dam/villanova/sites/magazine/assets/imgs/mars/mars-planet.png"
+                            alt="Target" onclick="mine()">
+                    </div>
+                </div>
+                <div class="col-sm-5">
                     <h3>$<span><span id="money"></span><span>M</h3></span>
                     <button class="btn btn-warning" onclick="sell()">Sell Ore</button>
                     </span>
-                    <div class="card">
-                        <div class="card=title">
-                            <h2>Equipment</h2>
-                        </div>
+                    <div class="card2">
                         <div class="card-body">
-                            <span id="gear"></span>
+                            <h1>Power:<span id="power"></span></h1>
+                            <h1>Power from Automation:<span id="dronePower"></span></h1>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <span id="noSale"></span>
-                    <h3>Buy Items!</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div id="items">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <span id="noSale">
+                    <h2>Buy Items!</h2>
+                </span>
+                </span>
             </div>
         </div>
+        <div id="items" class="row">
+
         </div>
+        </div>
+
     </main>
     <footer>
 

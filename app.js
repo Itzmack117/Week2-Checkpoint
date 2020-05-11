@@ -11,6 +11,7 @@ const items = [{
     price: 40,
     img: "https://vignette.wikia.nocookie.net/elite-dangerous/images/5/5b/Manticore_Drone.jpg/revision/latest/scale-to-width-down/250?cb=20170212202359",
     miningPower: 1,
+    interval: 2,
     automation: true,
 }, {
     id: "BFG",
@@ -25,6 +26,7 @@ const items = [{
     price: 100000000,
     img: "https://i.imgflip.com/2kbvkv.jpg",
     miningPower: 999999,
+    interval: 60,
     automation: true,
 }
 ]
@@ -41,18 +43,10 @@ function mine() {
 function update() {
     document.getElementById("ore").innerText = ore.toString()
     document.getElementById("money").innerText = money.toString()
-    document.getElementById("powerLevel")
-}
-
-function drawButtons() {
-    document.getElementById("clickMe").innerHTML = `<span><h1>Ore mined:</span><span id="ore"></span><span>tons</h1></span
-        <div class="pointer">
-            <img src="https://images.ctfassets.net/3s5io6mnxfqz/2VvogyEVZPpfXN8X8hqcwh/832e089800b2774ff722e89781796945/AdobeStock_214131404.jpeg" alt="Target" onclick="mine()">
-                    </div>`
+    document.getElementById("power").innerText = power.toString()
+    document.getElementById("dronePower").innerText = dronePower.toString()
 }
 drawItems()
-drawButtons()
-
 function drawItems() {
     let template = ""
     items.forEach(i => {
@@ -94,7 +88,7 @@ function addGear(itemId) {
 function poorTimer() {
     document.getElementById("noSale").innerHTML = ''
 } {
-    3000;
+    1000;
     update()
 }
 
@@ -113,6 +107,14 @@ function upDrones() {
         return dronePower
     })
 }
+function droneMining() {
+    ore += dronePower
+    update()
+}
+setInterval(() => {
+    droneMining();
+}, 2000);
+
 function sell() {
     money = money + ore
     ore = 0

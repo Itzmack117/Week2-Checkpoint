@@ -6,8 +6,23 @@ body{
     color: aliceblue;
 }
 .card{
-    background-color: black !important;
-    border: 2px solid #ff66009f;
+    background-color: black;
+    border: 2px solid #b97a45;
     border-radius: 25%;
+    align-items: center;
     cursor: pointer;
+    width: 393px;
+    height: 493px;
+}
+.card2{
+    height: auto;
+    width: auto;
+    border: 2px solid #b97a45;
+    border-radius: 25%;
+}
+
+#bg-image{
+    align-items: center;
+    height: 75%;
+    width: 75%;
 }
