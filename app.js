@@ -79,7 +79,6 @@ function addGear(itemId) {
         upPrice(itemId)
         if (gear.automation === true) {
             autobots.push(gear)
-            console.log()
             upDrones()
             update()
             drawItems()
@@ -88,7 +87,6 @@ function addGear(itemId) {
             chkPower()
             update()
             drawItems()
-            console.log('else')
         }
     } else {
         let template = `<span><h2>Insufficient funds</h2></span>`
@@ -124,7 +122,6 @@ function upDrones() {
     }
 
     )
-    console.log(dronePower)
 }
 function droneMining() {
     ore += dronePower
