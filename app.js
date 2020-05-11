@@ -72,9 +72,9 @@ function drawItems() {
 function addGear(itemId) {
     let gear = items.find(i => i.id === itemId)
     if (gear.price <= money) {
+        money -= gear.price
         gearList.push(gear)
         console.log(gearList)
-        money -= gear.price
         chkPower()
         update()
         if (gear.automation = true) {
