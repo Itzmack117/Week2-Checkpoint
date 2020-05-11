@@ -1,6 +1,9 @@
 .pointer{
     cursor: pointer;
 }
+header{
+    background-color:#b97a45;
+}
 body{
     background-color: black;
     color: aliceblue;
@@ -8,7 +11,7 @@ body{
 .card{
     background-color: black;
     border: 2px solid #b97a45;
-    border-radius: 25%;
+    border-radius: 18%;
     align-items: center;
     cursor: pointer;
     width: 393px;

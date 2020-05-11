@@ -1,24 +1,29 @@
 const items = [{
     id: "newdrill",
     name: "Advanced Drill",
-    price: 15,
+    price: 10,
     img: "https://image.shutterstock.com/image-photo/photo-handsome-masculine-worker-guy-600w-1609558351.jpg",
     miningPower: 2,
+    interval: " per click",
+    owned: 0,
     automation: false,
 }, {
     id: "miningDrone",
     name: "Mining Drones",
     price: 40,
     img: "https://vignette.wikia.nocookie.net/elite-dangerous/images/5/5b/Manticore_Drone.jpg/revision/latest/scale-to-width-down/250?cb=20170212202359",
-    miningPower: 1,
-    interval: 2,
+    miningPower: 2,
+    interval: " every 2s",
+    owned: 0,
     automation: true,
 }, {
     id: "BFG",
     name: "BFG 10000",
     price: 9001,
     img: "https://scontent.fboi1-1.fna.fbcdn.net/v/t1.0-9/39313203_1990410767917846_417533038067449856_n.jpg?_nc_cat=105&_nc_sid=8024bb&_nc_ohc=6jyKiomisH0AX8QNATh&_nc_ht=scontent.fboi1-1.fna&oh=ea0d7a71602144d5c383f947cd68526d&oe=5EDE80BD",
-    miningPower: 1250,
+    miningPower: 1200,
+    interval: " per click",
+    owned: 0,
     automation: false,
 }, {
     id: "elon",
@@ -26,11 +31,13 @@ const items = [{
     price: 100000000,
     img: "https://i.imgflip.com/2kbvkv.jpg",
     miningPower: 999999,
-    interval: 60,
+    interval: " every 2s",
+    owned: 0,
     automation: true,
 }
 ]
 
+let autobots = []
 let gearList = []
 let ore = 0
 let power = 1
@@ -55,8 +62,9 @@ function drawItems() {
             <h5 class="card-title">${i.name}</h5>
             <p class="card-text">Price: $${i.price}M</p>
                 <img class="card-img-top" src="${i.img}">
-                    <div class="card-body"><h4>Mining Power: ${i.miningPower}</h4>
-                     </div>
+                    <div class="card-body"><h4>Mining Power: ${i.miningPower}${i.interval}</h4>
+                    </div>
+                    <h5>Owned ${i.owned}</h5>
             </div>
         </div>
         `
@@ -67,23 +75,34 @@ function addGear(itemId) {
     let gear = items.find(i => i.id === itemId)
     if (gear.price <= money) {
         money -= gear.price
-        gearList.push(gear)
-        console.log(gearList)
-        chkPower()
-        update()
-        if (gear.automation = true) {
+        gear.owned++
+        upPrice(itemId)
+        if (gear.automation === true) {
+            autobots.push(gear)
+            console.log()
             upDrones()
+            update()
+            drawItems()
+        } else {
+            gearList.push(gear)
+            chkPower()
+            update()
+            drawItems()
+            console.log('else')
         }
     } else {
         let template = `<span><h2>Insufficient funds</h2></span>`
         document.getElementById("noSale").innerHTML = template
         setTimeout(() => {
-
             document.getElementById("noSale").innerHTML = ''
         }, 4000);
         update()
     }
 
+}
+function upPrice(itemId) {
+    let gear = items.find(i => i.id === itemId)
+    Math.ceil(gear.price *= 2)
 }
 function poorTimer() {
     document.getElementById("noSale").innerHTML = ''
@@ -100,12 +119,12 @@ function chkPower() {
 }
 function upDrones() {
     dronePower = 0
-    gearList.forEach(g => {
-        if (g.automation = true) {
-            dronePower += g.miningPower
-        }
-        return dronePower
-    })
+    autobots.forEach(a => {
+        dronePower += a.miningPower
+    }
+
+    )
+    console.log(dronePower)
 }
 function droneMining() {
     ore += dronePower
@@ -114,6 +133,7 @@ function droneMining() {
 setInterval(() => {
     droneMining();
 }, 2000);
+
 
 function sell() {
     money = money + ore
